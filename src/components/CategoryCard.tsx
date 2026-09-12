@@ -1,12 +1,15 @@
 import type {Category} from "../types/Category";
+import {Link} from "react-router";
 
 function CategoryCard(props: Category) {
-    const { title } = props;
+    const { title, slug } = props;
 
     return (
-        <section>
-            <p>{title}</p>
-        </section>
+        <Link to={`/category/${slug}`}>
+            <section>
+                <p>{title}</p>
+            </section>
+        </Link>
     )
 }
 
