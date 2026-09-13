@@ -4,7 +4,7 @@ import {Routes, Route} from "react-router";
 import CategoryPage from "./pages/CategoryPage";
 import NotePage from "./pages/NotePage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
     return (
