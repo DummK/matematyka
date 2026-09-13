@@ -2,6 +2,8 @@ import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import {Routes, Route} from "react-router";
 import CategoryPage from "./pages/CategoryPage";
+import NotePage from "./pages/NotePage.tsx";
+import NotFoundPage from "./pages/NotFoundPage.tsx";
 
 function App() {
     return (
@@ -10,6 +12,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/category/:slug" element={<CategoryPage />} />
+                <Route path="/category/:categorySlug/:noteSlug" element={<NotePage />} />
+                <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </>
     )
