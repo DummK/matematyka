@@ -4,6 +4,7 @@ import {Routes, Route} from "react-router";
 import CategoryPage from "./pages/CategoryPage";
 import NotePage from "./pages/NotePage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
+import { Analytics } from "@vercel/analytics/next"
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/category/:categorySlug/:noteSlug" element={<NotePage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
+            <Analytics/>
         </>
     )
 }
