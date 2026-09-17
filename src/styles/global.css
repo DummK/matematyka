@@ -452,3 +452,15 @@ input:focus-visible {
     background: var(--color-accent);
     color: white;
 }
+
+.pdf-renderer {
+    width: 100%;
+}
+
+.react-pdf__Document {
+    width: 100%;
+}
+
+.react-pdf__Page {
+    width: 100%;
+}
