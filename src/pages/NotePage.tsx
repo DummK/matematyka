@@ -8,6 +8,7 @@ import type { Note } from "../types/Note";
 
 import { notes } from "../data/Notes";
 import { categories } from "../data/Categories";
+import PdfViewer from "../components/PdfViewer";
 
 function NotePage() {
     const params = useParams();
@@ -81,11 +82,7 @@ function NotePage() {
                                     )
                                 }
 
-                                <iframe
-                                    className="pdf-viewer"
-                                    src={file}
-                                    title={`${note.title} — strona ${index + 1}`}
-                                />
+                                <PdfViewer fileName={file} />
                             </div>
                         );
                     })
