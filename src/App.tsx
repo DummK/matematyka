@@ -5,6 +5,7 @@ import CategoryPage from "./pages/CategoryPage";
 import NotePage from "./pages/NotePage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Analytics/>
+            <SpeedInsights/>
         </>
     )
 }
