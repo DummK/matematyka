@@ -1,59 +1,45 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
 
-import { notes } from "../data/Notes";
-import {searchNotes} from "../utils/search";
-import {categories} from "../data/Categories";
+import SearchPalette from "./SearchPalette";
 
 function SearchBar() {
-    const [query, setQuery] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
 
-    const searchResults = searchNotes(query, notes);
+    useEffect(() => {
+        function handleKeyDown(event: KeyboardEvent) {
+            if (event.ctrlKey && event.key.toLowerCase() === "k") {
+                event.preventDefault();
+                setIsOpen(true);
+            }
+        }
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, []);
 
     return (
         <div className="search">
-            <input
-                className="search-input"
-                value={query}
-                onChange={(event) => {
-                    setQuery(event.target.value);
-                }}
-                placeholder="Szukaj notatki..."
+            <button
+                className="search-trigger"
+                onClick={() => setIsOpen(true)}
+                type="button"
+            >
+                <span className="search-trigger-label">
+                    Szukaj notatki...
+                </span>
+
+                <span className="search-trigger-shortcut">
+                    Ctrl K
+                </span>
+            </button>
+
+            <SearchPalette
+                isOpen={isOpen}
+                onClose={() => setIsOpen(false)}
             />
-
-            {
-                query && (
-                    <div className="search-results">
-                        {
-                            searchResults.length > 0
-                                ? searchResults.map((result) => {
-                                    const category = categories.find((category) => {
-                                        return category.slug === result.note.categorySlug;
-                                    });
-
-                                    return (
-                                        <Link
-                                            className="search-result"
-                                            key={result.note.id}
-                                            to={`/category/${result.note.categorySlug}/${result.note.slug}`}
-                                            onClick={() => setQuery("")}
-                                        >
-                                            <span>
-                                                {result.note.title} ({category?.title})
-                                            </span>
-                                            <span>→</span>
-                                        </Link>
-                                    );
-                                })
-                                : (
-                                    <p className="search-empty">
-                                        Brak wyników
-                                    </p>
-                                )
-                        }
-                    </div>
-                )
-            }
         </div>
     );
 }

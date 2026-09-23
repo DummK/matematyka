@@ -22,7 +22,8 @@ export function wordsMatch(queryWord: string, targetWord: string): boolean {
 export function searchNotes(query: string, notes: Note[]): SearchResult[]{
     const normalizedQuery = normalizeText(query);
 
-    if(!normalizedQuery) return [];
+    if(!normalizedQuery || normalizedQuery.length < 2) return [];
+
 
     const results: SearchResult[] = [];
 
@@ -55,7 +56,7 @@ export function searchNotes(query: string, notes: Note[]): SearchResult[]{
             score = 40;
             matchedBy = "slug";
         }
-        else {
+        else if(normalizedQuery.length >= 3){
             const queryWords = normalizedQuery.split(" ");
             const titleWords = normalizedTitle.split(" ");
 

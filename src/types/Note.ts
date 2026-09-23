@@ -1,7 +1,19 @@
-import type { CategorySlug} from "./Category";
+import type { CategorySlug } from "./Category";
 
-export type NoteTitle = 'Ciąg arytmetyczny' | 'Ciąg geometryczny' | 'Granica' | 'Granica 2' | 'Szereg'
-type NoteSlug = 'ciag-arytmetyczny' | 'ciag-geometryczny' | 'granica' | 'granica-2' | 'szereg'
+export type NoteTitle =
+    | "Ciąg arytmetyczny"
+    | "Ciąg geometryczny"
+    | "Granica"
+    | "Granica 2"
+    | "Szereg";
+
+export type NoteSlug =
+    | "ciag-arytmetyczny"
+    | "ciag-geometryczny"
+    | "granica"
+    | "granica-2"
+    | "szereg";
+
 
 export type Note = {
     id: number;
@@ -10,4 +22,4 @@ export type Note = {
     categorySlug: CategorySlug;
     files: string[];
     keywords?: string[];
-}
+};
