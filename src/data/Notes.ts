@@ -13,7 +13,6 @@ export const notes: Note[] = [
             "rekurencyjny",
             "rekurencja",
             "an",
-            "Siurek"
         ]
     },
     {
