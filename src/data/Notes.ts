@@ -12,7 +12,7 @@ export const notes: Note[] = [
             "suma",
             "rekurencyjny",
             "rekurencja",
-            "an",
+            "an"
         ]
     },
     {
